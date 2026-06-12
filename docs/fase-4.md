@@ -179,6 +179,7 @@ Para cada entidade que precisar de estado global, criar um slice seguindo a estr
    - `chore: configuração da store e hooks tipados`
    - `feat: criação dos mocks da aplicação`
    - `feat: criação dos slices da aplicação`
+   - `chore: configuração do Provider do Redux no main.tsx`
 4. Criar a branch remota no GitHub: `git push origin HEAD`
 5. Realizar o merge da branch:
    - Atribuir a branch para revisão
