@@ -2,18 +2,18 @@ import { createGlobalStyle } from 'styled-components'
 
 export const colors = {
   // Accent
-  primary: '',
+  primary: '#487eb0',
 
   // Feedback
-  success: '',
-  warning: '',
-  error: '',
-  info: '',
+  success: '#4cd137',
+  warning: '#fbc531',
+  error: '#e84118',
+  info: '#00a8ff',
 
   // Hover
   hover: {
-    primary: '',
-    error: ''
+    primary: '#273c75',
+    error: '#c23616'
   }
 }
 

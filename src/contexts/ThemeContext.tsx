@@ -5,7 +5,7 @@ import { light } from '../styles/themes/light'
 
 export type ThemeName = 'light' | 'dark'
 
-const themes = { light, dark }
+const themes: Record<ThemeName, typeof light> = { light, dark }
 
 type ThemeContextType = {
   themeName: ThemeName
@@ -23,8 +23,12 @@ export const AppThemeProvider = ({
   children: React.ReactNode
 }) => {
   const [themeName, setThemeName] = useState<ThemeName>(() => {
-    const saved = localStorage.getItem('theme') as ThemeName | null
-    return saved ?? 'light'
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme') as ThemeName | null
+
+      if (saved === 'light' || saved === 'dark') return saved
+    }
+    return 'light'
   })
 
   useEffect(() => {
@@ -33,9 +37,11 @@ export const AppThemeProvider = ({
 
   const setTheme = (name: ThemeName) => setThemeName(name)
 
+  const currentTheme = themes[themeName] || light
+
   return (
     <ThemeContext.Provider value={{ themeName, setTheme }}>
-      <ThemeProvider theme={themes[themeName]}>{children}</ThemeProvider>
+      <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   )
 }
